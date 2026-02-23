@@ -135,7 +135,7 @@ Place screenshots inside:
 
 Example:
 
-![ECS Running Task](screenshots/ecs-running-task.png)
+![ECS Running Task](screenshots/8> Strapi-app-live.png)
 🚀 Local Terraform Usage
 # Initialize Terraform
 terraform init
