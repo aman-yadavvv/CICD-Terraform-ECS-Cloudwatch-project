@@ -65,8 +65,8 @@ Terraform Destroy
 
 
 Clean infrastructure safely
-
-📁 Project Structure
+---
+### 📁 Project Structure
 .
 ├── .github/workflows/
 │   ├── ci.yml
@@ -87,6 +87,7 @@ Clean infrastructure safely
 │   └── Strapi source code
 │
 └── README.md
+---
 
 
 ⚙️ Deployment Flow
@@ -116,7 +117,7 @@ Application connects to RDS
 ✔ Modular Terraform structure
 ✔ Separate CI / CD / Destroy workflows
 
-
+---
 📸 Screenshots
 
 Place screenshots inside:
@@ -131,7 +132,7 @@ Place screenshots inside:
   ├── 7> Cloudwatch- Dashboard.png
   ├── 8> Strapi-app-live.png
   ├── 9> Terraform-apply-local.png
-
+---
 
 Example:
 
