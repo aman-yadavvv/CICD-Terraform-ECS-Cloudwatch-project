@@ -17,6 +17,9 @@ flowchart LR
     E --> F[ECS Fargate Deployment]
     F --> G[RDS PostgreSQL]
     G --> H[Live Application]
+```
+
+screenshots/architecture.jpg
 
 
 🏗️ Infrastructure Stack
