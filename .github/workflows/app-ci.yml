@@ -1,0 +1,46 @@
+name: App CI
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.tf'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+          aws-region: us-east-1
+
+      - name: Login to ECR
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build Image
+        run: |
+          docker build -t aman-strapi-image-1:${{ github.sha }} .
+
+      - name: Tag Image
+        run: |
+          docker tag aman-strapi-image-1:${{ github.sha }} \
+          050916385394.dkr.ecr.us-east-1.amazonaws.com/aman-strapi-image-1:latest
+
+      - name: Push Image
+        run: |
+          docker push 050916385394.dkr.ecr.us-east-1.amazonaws.com/aman-strapi-image-1:latest
+
+      - name: Force ECS Deployment
+        run: |
+          aws ecs update-service \
+            --cluster app-cluster \
+            --service app-service \
+            --force-new-deployment
